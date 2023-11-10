@@ -38,15 +38,16 @@ public class JuegoPeleas {
                 // Lógica del Luchador 1
                 switch (Luchador2) {
                     case 1:
+                    
                         // Lógica de enfrentamiento entre Clerigo y Clerigo
                         break;
                     case 2:
                         // Lógica de enfrentamiento entre Clerigo y Mago
                         break;
                     case 3:
-                        //logica de enfrentamiento entre Clerigo 
+                        //logica de enfrentamiento entre Clerigo y barbaro
                     default:
-                        System.out.println("Selección inválida para el contrincante");
+                        System.out.println("Selección inválida para el Jugador");
                         break;
                          }
                 break;

@@ -120,4 +120,16 @@ public class Clerigo implements Skills,Magias {
         System.out.println("Frenesi activado...");
     }
     
+    public int DadoTurno(){
+        int resul = (int)(Math.random()*(20-1+1));
+        return resul;
+    }
+
+    public void enfrentarse1(){
+        int turnoClerigo=DadoTurno();
+        int turnoclerigo=DadoTurno();
+    if (turnoClerigo<turnoclerigo) {
+        
+    }
+    }
 }
