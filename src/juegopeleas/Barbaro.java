@@ -55,7 +55,7 @@ public class Barbaro implements Skills {
     }
 
     @Override
-    public void Escapar() {
+    public void GritoDeGuerra() {
         System.out.println("Escapando...");
     }
 
@@ -83,5 +83,11 @@ public class Barbaro implements Skills {
     public void Frenesi() {
         System.out.println("Frenesi activado...");
     }
-    
+    public void mostrar(){
+        System.out.println("NOMBRE: "+this.Nombre);
+        System.out.println("HP: "+this.hp);
+        System.out.println("ATK: "+this.atk);
+        System.out.println("DEF: "+this.def);
+        
+    }
 }

@@ -88,6 +88,12 @@ public class Mago implements Magias {
     public void BurbujaDefensa() {
         System.out.println("Burbuja de defensa activada...");
     }
-    
+    public void mostrar(){
+        System.out.println("NOMBRE:"+this.Nombre);
+        System.out.println("HP: "+this.hp);
+        System.out.println("ATK: "+this.atk);
+        System.out.println("DEF: "+this.def);
+        System.out.println("MANA: "+this.mana);
+    }
     
 }

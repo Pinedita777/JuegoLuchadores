@@ -66,7 +66,7 @@ public class Clerigo implements Skills,Magias {
     
 
     @Override
-    public void Escapar() {
+    public void GritoDeGuerra() {
         System.out.println("Escapando...");  
     }
 
@@ -120,6 +120,14 @@ public class Clerigo implements Skills,Magias {
         System.out.println("Frenesi activado...");
     }
     
+    public void mostrar(){
+        System.out.println("NOMBRE: "+this.Nombre);
+        System.out.println("HP: " +this.hp);
+        System.out.println("ATK: " +this.atk);
+        System.out.println("DEF: "+this.def);
+        System.out.println("DES: "+this.mana);
+    }
+
     public int DadoTurno(){
         int resul = (int)(Math.random()*(20-1+1));
         return resul;
@@ -128,8 +136,24 @@ public class Clerigo implements Skills,Magias {
     public void enfrentarse1(){
         int turnoClerigo=DadoTurno();
         int turnoclerigo=DadoTurno();
-    if (turnoClerigo<turnoclerigo) {
-        
+
+        Clerigo Cl1 = new Clerigo(Nombre, 160, 80, 70, 150);
+        Clerigo Cl2 = new Clerigo(Nombre, 160, 80, 70, 150);
+
+        System.out.println("Dado Jugador: "+turnoClerigo);
+        System.out.println("Dado Enemigo: "+turnoclerigo);
+    if (turnoClerigo>turnoclerigo) {
+         Cl2.hp=Cl2.hp-(Cl1.atk-Cl2.def);
+         Cl2.mostrar();
+         }
+    else if (turnoClerigo<turnoclerigo) {
+         Cl1.hp=Cl1.hp-(Cl2.atk-Cl1.def);
+         Cl1.mostrar();
+    }    
     }
-    }
+    
+     public void enfrentarse2(){
+        int turnoClerigo=DadoTurno();
+        int turnoMago=DadoTurno();
+     }
 }

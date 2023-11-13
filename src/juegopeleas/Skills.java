@@ -10,7 +10,8 @@ package juegopeleas;
  */
 public interface Skills {
     
-    public void Escapar();
+    public void GritoDeGuerra();
+    
     
     public void Atacar();
     
