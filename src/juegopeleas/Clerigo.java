@@ -67,7 +67,7 @@ public class Clerigo implements Skills,Magias {
 
     @Override
     public void GritoDeGuerra() {
-        System.out.println("Escapando...");  
+        System.out.println("*Grito De Guerra*...");  
     }
 
     @Override
