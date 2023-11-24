@@ -8,7 +8,7 @@ package juegopeleas;
  *
  * @author APRENDIZ
  */
-public class Barbaro implements Skills {
+public class Barbaro extends Luchador {
     
     private String Nombre;
     private int hp;
@@ -17,6 +17,12 @@ public class Barbaro implements Skills {
 
     public String getNombre() {
         return Nombre;
+    }
+
+    @Override
+    public void atacar(Luchador oponente) {
+        
+        super.atacar(oponente);
     }
 
     public void setNombre(String Nombre) {
@@ -54,32 +60,32 @@ public class Barbaro implements Skills {
         this.def = def;
     }
 
-    @Override
+    
     public void GritoDeGuerra() {
         System.out.println("Escapando...");
     }
 
-    @Override
+    
     public void Atacar() {
         System.out.println("Atacando...");
     }
 
-    @Override
+    
     public void DobleAtaque() {
         System.out.println("Doble Ataque...");
     }
 
-    @Override
+    
     public void ReforzarDefensa() {
         System.out.println("Reforzando defensa...");
     }
 
-    @Override
+    
     public void Desangrar() {
         System.out.println("Desangrando...");
     }
 
-    @Override
+    
     public void Frenesi() {
         System.out.println("Frenesi activado...");
     }

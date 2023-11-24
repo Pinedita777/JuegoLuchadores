@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package juegopeleas;
-
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -16,110 +16,93 @@ public class JuegoPeleas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        int DT=0;
-        Clerigo Cl= new Clerigo("Pedro",160,80,70,150);
         
-        Mago Ma= new Mago("Gandalf",140,120,50,200);
-      
-        Barbaro Ba= new Barbaro("Kratos",200,100,100);
         
-        Scanner sc = new Scanner (System.in);
         
-        System.out.println("Selecciona tu Rol...");
-        System.out.println("1. Clerigo ");
-        System.out.println("2. Mago ");
-        System.out.println("3. Barbaro ");
-        System.out.println("4. Nigromante ");
-        int Luchador1 = sc.nextInt();
+        System.out.println("Bienvenido al juego de luchadores");
+
         
-        System.out.println("Selecciona tu contrincante");
+        
+         
+
+        // Elegir quien empieza primero
+        
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Elige tu personaje...");
+
         System.out.println("1. Clerigo");
         System.out.println("2. Mago");
         System.out.println("3. Barbaro");
         System.out.println("4. Nigromante");
-        int Luchador2 = sc.nextInt();
-        
-        switch (Luchador1) {
-            case 1:
-                // Lógica del Luchador 1
-                switch (Luchador2) {
-                    case 1:
-                    
-                        // Lógica de enfrentamiento entre Clerigo y Clerigo
-                        while (Cl.getHp()>0 && Cl.getHp()>0) {
-                            
-                        }
-                        break;
-                    case 2:
-                        // Lógica de enfrentamiento entre Clerigo y Mago
-                        break;
-                    case 3:
-                        //logica de enfrentamiento entre Clerigo y barbaro
-                    case 4:
-                        //logica de enfrentamiento entre Clerigo y nigromante
-                        break;
-                    default:
-                        System.out.println("Selección inválida para el Jugador");
-                        break;
-                         }
-                break;
-            case 2:
-                // Lógica del Luchador2
-                switch (Luchador1) {
-                    case 1:
-                        // Lógica de enfrentamiento entre Mago y Clerigo
-                        break;
-                    case 2:
-                        // Lógica de enfrentamiento entre Mago y Mago
-                        break;
-                    case 3:
-                        //logica de enfrentamiento entre Mago y Barbaro
-                        break;
-                    case 4:
-                        //logica de enfrentamiento entre Mago y nigromante
-                        break;
-                    default:
-                        System.out.println("Seleccion invalida para el contrincante.");
-                        break;
-                }
-            case 3:
-                switch (Luchador1) {
-                    case 1:
-                        //logica Barbaro y Clerigo
-                        break;
-                    case 2:
-                        //logica Barbaro y Mago
-                        break;
-                    case 3:
-                        // logica Barbaro y Barbaro
-                        break;
-                    case 4:
-                        //logica Barbaro y Nigromante  
-                        break;                
-                    default:
-                        break;
-                } 
-                
-                break;
 
+        int seleccionPrincipal = sc.nextInt();
+        Luchador personajePrincipal = seleccionarLuchador(seleccionPrincipal);
+        
+
+        System.out.println("Selecciona tu oponente...");
+        System.out.println("1. Clerigo");
+        System.out.println("2. Mago");
+        System.out.println("3. Barbaro");
+        System.out.println("4. Nigromante");
+        
+        int seleccionOponente = sc.nextInt();
+        Luchador oponente = seleccionarLuchador(seleccionOponente);
+
+        //Realizar enfrentamiento
+
+        enfrentarLuchadores(personajePrincipal, oponente);  
+
+    }
+
+    private static Luchador seleccionarLuchador(int seleccion) {
+        switch (seleccion) {
+            case 1:
+                return new Clerigo("Juana De arco", 1000, 150, 130, 180);
+            case 2:
+                return new Mago("Gandalf", 1000, 180, 120, 250);
+            case 3:
+                return new Barbaro("Kratos", 1000, 200, 150);
             case 4:
-                switch (Luchador2) {
-                    case 1:
-                        
-                        break;
-                
-                    default:
-                        break;
-                }
+                return new Nigromante("Geralt", 1000, 200, 100, 200);
             default:
-                System.out.println("Seleccion invalida para el primer luchador.");
-                break;}
-        
-        
-        
+                System.out.println("Selección no válida. Seleccionando Guerrero por defecto.");
+                break;
+                
+        }
+        return null;
+    
+    
+    
+    }
+    private static void enfrentarLuchadores(Luchador personaje1, Luchador personaje2) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("¡Enfrentamiento!");
+        System.out.println("Selecciona el ataque de "+personaje1.getClass().getSimpleName() + ":");
+        System.out.println("1. Ataque basico");
+        System.out.println("2. Ataque especial");
+
+        int seleccionAtaque2 = scanner.nextInt();
+        realizarAtaque(personaje2, personaje1, seleccionAtaque2);
         
        
     }
-    
+
+    private static void realizarAtaque(Luchador atacante, Luchador objetivo, int seleccionAtaque){
+        switch (seleccionAtaque) {
+            case 1:
+                atacante.atacar(objetivo);
+                break;
+            case 2:
+                atacante.ataqueEspecial(objetivo);
+                break;
+            default:
+                break;
+        }
+    }
 }
+    
+

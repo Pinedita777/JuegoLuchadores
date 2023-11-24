@@ -1,6 +1,6 @@
 package juegopeleas;
 
-public class Nigromante implements Magias {
+public class Nigromante extends Luchador {
     private String Nombre;
     private int hp;
     private int atk;
@@ -44,27 +44,32 @@ public class Nigromante implements Magias {
     public void setMana(int mana) {
         this.mana = mana;
     }
+    
     @Override
+    public void atacar(Luchador oponente) {
+        
+        super.atacar(oponente);
+    }
     public void Curar() {
         
         System.out.println( "Curar");
     }
-    @Override
+    
     public void Drenar() {
         
         System.out.println("Drenar");
     }
-    @Override
+    
     public void AtaqueHielo() {
         
          System.out.println();
     }
-    @Override
+    
     public void AtaqueFuego() {
         
          System.out.println();
     }
-    @Override
+    
     public void BurbujaDefensa() {
         
         System.out.println();

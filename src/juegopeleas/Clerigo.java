@@ -8,7 +8,7 @@ package juegopeleas;
  *
  * @author APRENDIZ
  */
-public class Clerigo implements Skills,Magias {
+public class Clerigo extends Luchador {
     
     private String Nombre;
     private int hp;
@@ -22,6 +22,12 @@ public class Clerigo implements Skills,Magias {
         this.atk = atk;
         this.def = def;
         this.mana = mana;
+    }
+
+    @Override
+    public void atacar(Luchador oponente) {
+        
+        super.atacar(oponente);
     }
 
     public String getNombre() {
@@ -65,57 +71,57 @@ public class Clerigo implements Skills,Magias {
     }
     
 
-    @Override
+    
     public void GritoDeGuerra() {
         System.out.println("*Grito De Guerra*...");  
     }
 
-    @Override
+    
     public void Atacar() {
         System.out.println("Atacando...");    
     }
 
-    @Override
+    
     public void DobleAtaque() {
         System.out.println("Doble Ataque...");   
     }
 
-    @Override
+    
     public void ReforzarDefensa() {
         System.out.println("Reforzando Defensa...");
     }
 
-    @Override
+    
     public void Desangrar() {
         System.out.println("Desangrando...");
     }
 
-    @Override
+    
     public void Curar() {
         System.out.println("Curando...");   
     }
 
-    @Override
+    
     public void Drenar() {
         System.out.println("Drenando..."); 
     }
 
-    @Override
+    
     public void AtaqueHielo() {
         System.out.println("Ataque de hielo...");
     }
 
-    @Override
+    
     public void AtaqueFuego() {
         System.out.println("Ataque de fuego...");
     }
 
-    @Override
+    
     public void BurbujaDefensa() {
         System.out.println("Burbuja de Defensa Activada...");
     }
 
-    @Override
+    
     public void Frenesi() {
         System.out.println("Frenesi activado...");
     }
@@ -125,7 +131,7 @@ public class Clerigo implements Skills,Magias {
         System.out.println("HP: " +this.hp);
         System.out.println("ATK: " +this.atk);
         System.out.println("DEF: "+this.def);
-        System.out.println("DES: "+this.mana);
+        System.out.println("MANA: "+this.mana);
     }
 
     public int DadoTurno(){
@@ -134,22 +140,7 @@ public class Clerigo implements Skills,Magias {
     }
 
     public void enfrentarse1(){
-        int turnoClerigo=DadoTurno();
-        int turnoclerigo=DadoTurno();
-
-        Clerigo Cl1 = new Clerigo(Nombre, 160, 80, 70, 150);
-        Clerigo Cl2 = new Clerigo(Nombre, 160, 80, 70, 150);
-
-        System.out.println("Dado Jugador: "+turnoClerigo);
-        System.out.println("Dado Enemigo: "+turnoclerigo);
-    if (turnoClerigo>turnoclerigo) {
-         Cl2.hp=Cl2.hp-(Cl1.atk-Cl2.def);
-         Cl2.mostrar();
-         }
-    else if (turnoClerigo<turnoclerigo) {
-         Cl1.hp=Cl1.hp-(Cl2.atk-Cl1.def);
-         Cl1.mostrar();
-    }    
+           
     }
     
      public void enfrentarse2(){

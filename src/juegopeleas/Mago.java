@@ -8,10 +8,15 @@ package juegopeleas;
  *
  * @author APRENDIZ
  */
-public class Mago implements Magias {
+public class Mago extends Luchador {
     
     private String Nombre;
     private int hp;
+    @Override
+    public void atacar(Luchador oponente) {
+        
+        super.atacar(oponente);
+    }
     private int atk;
     private int def;
     private int mana;
@@ -64,27 +69,30 @@ public class Mago implements Magias {
         this.mana = mana;
     }
 
-    @Override
+    
     public void Curar() {
         System.out.println("Curando...");
+        this.hp +=25;
+        this.mana-=10;
+
     }
 
-    @Override
+    
     public void Drenar() {
-        System.out.println("Drenar...");
     }
 
-    @Override
+    
     public void AtaqueHielo() {
         System.out.println("Ataque de hielo...");
+        
     }
 
-    @Override
+    
     public void AtaqueFuego() {
         System.out.println("Ataque de fuego...");
     }
 
-    @Override
+    
     public void BurbujaDefensa() {
         System.out.println("Burbuja de defensa activada...");
     }
