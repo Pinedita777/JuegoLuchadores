@@ -26,7 +26,7 @@ public class Clerigo extends Luchador {
 
     @Override
     public void atacar(Luchador oponente) {
-        System.out.println("Clerigo hace un ataque con su mazo...");
+        System.out.println(this.Nombre+" hace un ataque con su mazo...");
         super.atacar(oponente);
         int dañoInflingido = this.getAtk() - oponente.getDef();
         int nuevoHp = oponente.getHp() - dañoInflingido;
@@ -34,7 +34,14 @@ public class Clerigo extends Luchador {
         System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
         
     }
-
+    @Override
+    public void ataqueEspecial(Luchador oponente){
+        System.out.println(this.Nombre+" invoca la ira sagrada");
+        super.ataqueEspecial(oponente);
+        int nuevoHp = oponente.getHp() - 150;
+         System.out.println("El oponente ha perdido 150 de vida");
+        
+    }
     
     public String getNombre() {
         return Nombre;

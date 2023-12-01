@@ -93,8 +93,21 @@ public class JuegoPeleas {
      
     private static void realizarAtaque(Luchador atacante, Luchador objetivo, int seleccionAtaque){
         while (atacante.getHp()>0 && objetivo.getHp()>0) {
-            
-        
+
+         int dl1=0, dl2=0;
+
+        dl1 =(int)(Math.random()*(20-1+1))+1;
+        dl2 =(int)(Math.random()*(20-1+1))+1;
+
+        System.out.println("Tiro de dados para turno.....");
+        System.out.println("Dado de personaje 1: "+dl1);
+        System.out.println("Dado de personaje 2: "+dl2);
+        System.out.println(" ");
+
+        if (dl1>dl2) {
+           
+           System.out.println("Gano el turno el personaje 1");
+
         switch (seleccionAtaque) {
             case 1:
                 atacante.atacar(objetivo);
@@ -105,13 +118,30 @@ public class JuegoPeleas {
             default:
                 break;
         }
-        
-        if (atacante.getHp() > 0 && objetivo.getHp() > 0) {
-            Luchador temp = atacante;
+    }
+    else if(dl2>dl1){
+    System.out.println("Gano el turno el personaje 2 ");
+     Luchador temp = atacante;
             atacante = objetivo;
             objetivo = temp;
-            
+
+            switch (seleccionAtaque) {
+            case 1:
+                atacante.atacar(objetivo);
+                break;
+            case 2:
+                atacante.ataqueEspecial(objetivo);
+                break;
+            default:
+                break;
         }
+
+    }
+
+        
+           
+            
+        
     }
 }
     

@@ -30,6 +30,14 @@ public class Barbaro extends Luchador {
         System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
         
     }
+    @Override
+    public void ataqueEspecial(Luchador oponente){
+        System.out.println(this.Nombre+"Entra en frenesi y realiza varios ataques en cadena");
+        super.ataqueEspecial(oponente);
+        int nuevoHp = oponente.getHp() - this.atk * 3;
+         System.out.println("El oponente ha perdido"+nuevoHp+" de vida");
+        
+    }
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
@@ -92,9 +100,7 @@ public class Barbaro extends Luchador {
     }
 
     
-    public void Frenesi() {
-        System.out.println("Frenesi activado...");
-    }
+    
     public void mostrar(){
         System.out.println("NOMBRE: "+this.Nombre);
         System.out.println("HP: "+this.hp);
