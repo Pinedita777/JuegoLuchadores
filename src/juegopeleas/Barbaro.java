@@ -22,7 +22,13 @@ public class Barbaro extends Luchador {
     @Override
     public void atacar(Luchador oponente) {
         
+        System.out.println("El Barbaro hace un ataque con su gran hacha...");
         super.atacar(oponente);
+        int dañoInflingido = this.getAtk() - oponente.getDef();
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+        oponente.setHp(nuevoHp);
+        System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
+        
     }
 
     public void setNombre(String Nombre) {

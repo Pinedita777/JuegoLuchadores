@@ -12,11 +12,6 @@ public class Mago extends Luchador {
     
     private String Nombre;
     private int hp;
-    @Override
-    public void atacar(Luchador oponente) {
-        
-        super.atacar(oponente);
-    }
     private int atk;
     private int def;
     private int mana;
@@ -103,5 +98,15 @@ public class Mago extends Luchador {
         System.out.println("DEF: "+this.def);
         System.out.println("MANA: "+this.mana);
     }
-    
+     @Override
+    public void atacar(Luchador oponente) {
+        
+        System.out.println("Mago hace un hechizo de daño...");
+        super.atacar(oponente);
+        int dañoInflingido = this.getAtk() - oponente.getDef();
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+        oponente.setHp(nuevoHp);
+        System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
+        
+    }
 }

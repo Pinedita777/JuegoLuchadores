@@ -59,15 +59,15 @@ public class JuegoPeleas {
     private static Luchador seleccionarLuchador(int seleccion) {
         switch (seleccion) {
             case 1:
-                return new Clerigo("Juana De arco", 1000, 150, 130, 180);
+                return new Clerigo("Juana De arco", 1000, 150, 100, 180);
             case 2:
-                return new Mago("Gandalf", 1000, 180, 120, 250);
+                return new Mago("Gandalf", 1000, 180, 100, 250);
             case 3:
-                return new Barbaro("Kratos", 1000, 200, 150);
+                return new Barbaro("Kratos", 1000, 200, 100);
             case 4:
                 return new Nigromante("Geralt", 1000, 200, 100, 200);
             default:
-                System.out.println("Selección no válida. Seleccionando Guerrero por defecto.");
+                System.out.println("Selección no válida.");
                 break;
                 
         }
@@ -90,8 +90,11 @@ public class JuegoPeleas {
         
        
     }
-
+     
     private static void realizarAtaque(Luchador atacante, Luchador objetivo, int seleccionAtaque){
+        while (atacante.getHp()>0 && objetivo.getHp()>0) {
+            
+        
         switch (seleccionAtaque) {
             case 1:
                 atacante.atacar(objetivo);
@@ -102,7 +105,14 @@ public class JuegoPeleas {
             default:
                 break;
         }
+        
+        if (atacante.getHp() > 0 && objetivo.getHp() > 0) {
+            Luchador temp = atacante;
+            atacante = objetivo;
+            objetivo = temp;
+            
+        }
     }
 }
     
-
+}

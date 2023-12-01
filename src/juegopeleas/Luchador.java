@@ -7,5 +7,15 @@ public class Luchador {
     public void ataqueEspecial(Luchador oponente){
         
     }
+    public void setHp(int nuevoHp) {
+    }
+    public int getHp() {
+        return 0;
+    }
+    public int getDef() {
+        
+        return 0;
+    }
+    
     
 }

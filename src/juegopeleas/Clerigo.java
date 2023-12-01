@@ -26,10 +26,16 @@ public class Clerigo extends Luchador {
 
     @Override
     public void atacar(Luchador oponente) {
-        
+        System.out.println("Clerigo hace un ataque con su mazo...");
         super.atacar(oponente);
+        int dañoInflingido = this.getAtk() - oponente.getDef();
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+        oponente.setHp(nuevoHp);
+        System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
+        
     }
 
+    
     public String getNombre() {
         return Nombre;
     }
@@ -70,16 +76,6 @@ public class Clerigo extends Luchador {
         this.mana = mana;
     }
     
-
-    
-    public void GritoDeGuerra() {
-        System.out.println("*Grito De Guerra*...");  
-    }
-
-    
-    public void Atacar() {
-        System.out.println("Atacando...");    
-    }
 
     
     public void DobleAtaque() {
@@ -139,9 +135,7 @@ public class Clerigo extends Luchador {
         return resul;
     }
 
-    public void enfrentarse1(){
-           
-    }
+  
     
      public void enfrentarse2(){
         int turnoClerigo=DadoTurno();

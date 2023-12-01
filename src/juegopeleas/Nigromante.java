@@ -48,7 +48,13 @@ public class Nigromante extends Luchador {
     @Override
     public void atacar(Luchador oponente) {
         
+        System.out.println("Nigtomante hace un ataque con su guadaña...");
         super.atacar(oponente);
+        int dañoInflingido = this.getAtk() - oponente.getDef();
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+        oponente.setHp(nuevoHp);
+        System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
+        
     }
     public void Curar() {
         
