@@ -34,9 +34,10 @@ public class Barbaro extends Luchador {
     public void ataqueEspecial(Luchador oponente){
         System.out.println(this.Nombre+"Entra en frenesi y realiza varios ataques en cadena");
         super.ataqueEspecial(oponente);
-        int nuevoHp = oponente.getHp() - this.atk * 3;
-         System.out.println("El oponente ha perdido"+nuevoHp+" de vida");
-        
+        int dañoInflingido = (this.atk * 2);
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+         System.out.println("El oponente ha perdido " + dañoInflingido + " de vida");
+        oponente.setHp(nuevoHp);
     }
 
     public void setNombre(String Nombre) {
@@ -74,38 +75,28 @@ public class Barbaro extends Luchador {
         this.def = def;
     }
 
-    
-    public void GritoDeGuerra() {
-        System.out.println("Escapando...");
-    }
+
 
     
-    public void Atacar() {
-        System.out.println("Atacando...");
-    }
-
-    
-    public void DobleAtaque() {
-        System.out.println("Doble Ataque...");
-    }
-
-    
-    public void ReforzarDefensa() {
-        System.out.println("Reforzando defensa...");
-    }
-
-    
-    public void Desangrar() {
-        System.out.println("Desangrando...");
-    }
-
-    
-    
+    @Override
     public void mostrar(){
         System.out.println("NOMBRE: "+this.Nombre);
         System.out.println("HP: "+this.hp);
-        System.out.println("ATK: "+this.atk);
-        System.out.println("DEF: "+this.def);
-        
+        System.out.println("ATK: "+this.atk); 
+    }
+    @Override
+    public void Atributo(){
+        System.out.println(this.Nombre+" toma una de sus pociones de vida");
+        int nuevoHp = this.hp + 60;
+        setHp(nuevoHp);
+        System.out.println("Sube su vida en"+nuevoHp);
+    }
+
+    @Override
+    public void Pasivo(){
+        System.out.println(this.Nombre+" se enfurece");
+        int nuevoAtk = this.atk + 30;
+        setAtk(nuevoAtk);
+        System.out.println("el daño de "+ this.Nombre+" sube en "+nuevoAtk);
     }
 }

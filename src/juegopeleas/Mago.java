@@ -91,11 +91,11 @@ public class Mago extends Luchador {
     public void BurbujaDefensa() {
         System.out.println("Burbuja de defensa activada...");
     }
+    @Override
     public void mostrar(){
         System.out.println("NOMBRE:"+this.Nombre);
         System.out.println("HP: "+this.hp);
         System.out.println("ATK: "+this.atk);
-        System.out.println("DEF: "+this.def);
         System.out.println("MANA: "+this.mana);
     }
      @Override
@@ -108,5 +108,49 @@ public class Mago extends Luchador {
         oponente.setHp(nuevoHp);
         System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
         
+    }
+
+    @Override
+    public void ataqueEspecial(Luchador oponente){
+        System.out.println(this.Nombre + " Realiza un Hechizo de fuego ");
+        super.ataqueEspecial(oponente);
+        int dañoInflingido = (this.atk * 2);
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+        this.reducirMana();
+        System.out.println("El mago ha consumido 20 de su mana " + getMana());
+        System.out.println("El oponente ha sido quemado y recibe " + dañoInflingido + " de daño");
+        oponente.setHp(nuevoHp);
+    }
+
+    public void reducirMana( ){
+    int reduccion;
+    reduccion = this.mana - 20;
+    setMana(reduccion);
+    if (this.mana==0) {
+        
+    }
+    }
+    @Override
+    public void Atributo(){
+        if (this.hp<1000) {
+        System.out.println(this.Nombre + " Realiza un hechizo de curacion");
+        int nuevoHp = this.hp + 100;
+        setHp(nuevoHp);
+        this.reducirMana();
+        }else if (this.hp==1000) {
+            System.out.println("Salud al maximo no se puede curar");
+        } 
+    }
+    @Override
+    public void Pasivo(){
+        if (this.mana<260) {
+         System.out.println(this.Nombre+" Ejecuta su afinidad magica"); 
+         int nuevoMana = this.mana + 20;
+         setMana(nuevoMana);
+         int nuevoAtk = this.atk + 10;
+         setAtk(nuevoAtk);  
+        }else if (this.mana==260){
+            System.out.println("El mago no puede ejecutar su afinidad magica todavia");
+        }
     }
 }

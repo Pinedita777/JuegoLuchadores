@@ -38,9 +38,11 @@ public class Clerigo extends Luchador {
     public void ataqueEspecial(Luchador oponente){
         System.out.println(this.Nombre+" invoca la ira sagrada");
         super.ataqueEspecial(oponente);
-        int nuevoHp = oponente.getHp() - 150;
-         System.out.println("El oponente ha perdido 150 de vida");
-        
+        int dañoInflingido = (this.atk * 2);
+        int nuevoHp = oponente.getHp() - dañoInflingido;
+         System.out.println("El oponente ha perdido "+ dañoInflingido +" de vida");
+        oponente.setHp(nuevoHp);
+        this.reducirMana();
     }
     
     public String getNombre() {
@@ -83,69 +85,49 @@ public class Clerigo extends Luchador {
         this.mana = mana;
     }
     
-
-    
-    public void DobleAtaque() {
-        System.out.println("Doble Ataque...");   
-    }
-
-    
-    public void ReforzarDefensa() {
-        System.out.println("Reforzando Defensa...");
-    }
-
-    
-    public void Desangrar() {
-        System.out.println("Desangrando...");
-    }
-
-    
-    public void Curar() {
-        System.out.println("Curando...");   
-    }
-
-    
-    public void Drenar() {
-        System.out.println("Drenando..."); 
-    }
-
-    
-    public void AtaqueHielo() {
-        System.out.println("Ataque de hielo...");
-    }
-
-    
-    public void AtaqueFuego() {
-        System.out.println("Ataque de fuego...");
-    }
-
-    
-    public void BurbujaDefensa() {
-        System.out.println("Burbuja de Defensa Activada...");
-    }
-
-    
-    public void Frenesi() {
-        System.out.println("Frenesi activado...");
-    }
-    
+    @Override
     public void mostrar(){
         System.out.println("NOMBRE: "+this.Nombre);
         System.out.println("HP: " +this.hp);
         System.out.println("ATK: " +this.atk);
-        System.out.println("DEF: "+this.def);
         System.out.println("MANA: "+this.mana);
     }
 
-    public int DadoTurno(){
-        int resul = (int)(Math.random()*(20-1+1));
-        return resul;
-    }
-
-  
+    public void reducirMana( ){
+        int reduccion;
+        reduccion = this.mana - 20;
+        setMana(reduccion);
+        }
     
-     public void enfrentarse2(){
-        int turnoClerigo=DadoTurno();
-        int turnoMago=DadoTurno();
-     }
+    @Override
+    public void Atributo(){
+        if (this.hp<1000) {
+            System.out.println(this.Nombre+" Realiza una sanacion forticiada");
+            int nuevoHp = this.hp +80;
+            setHp(nuevoHp);
+            int nuevoDef = this.def +10;
+            setDef(nuevoDef);
+            this.reducirMana();
+        }else if (this.hp == 1000) {
+            System.out.println("Salud al maximo no se puede sanar");
+        }
+    }
+    @Override
+    public void Pasivo(){
+        int dadoDaño = 0;
+        dadoDaño = (int)(Math.random()*(20-1+1))+1;
+        if (dadoDaño >= 10) {
+            
+        System.out.println(this.Nombre+" Invoca la Ira de los abernos");
+        int nuevoAtk = this.atk + 60;
+        setAtk(nuevoAtk);
+        int nuevoMana = this.mana - 40;
+        setMana(nuevoMana);
+        System.out.println("EL daño de "+this.Nombre+" sube un total de "+nuevoAtk);
+        System.out.println(nuevoMana+" Mana gastado");
+        } else {
+            System.out.println("Fallo la invocacion");
+        }
+    }
+     
 }

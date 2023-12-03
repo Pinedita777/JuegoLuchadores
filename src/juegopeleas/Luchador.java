@@ -4,7 +4,13 @@ public class Luchador {
     public void atacar(Luchador oponente){
 
     }
+    public void Pasivo(){
+
+    }
     public void ataqueEspecial(Luchador oponente){
+        
+    }
+    public void Atributo(){
         
     }
     public void setHp(int nuevoHp) {
@@ -16,6 +22,8 @@ public class Luchador {
         
         return 0;
     }
-    
+    public void mostrar(){
+      
+    }
     
 }

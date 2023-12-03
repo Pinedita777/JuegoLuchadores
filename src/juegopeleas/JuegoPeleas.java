@@ -21,13 +21,6 @@ public class JuegoPeleas {
         
         System.out.println("Bienvenido al juego de luchadores");
 
-        
-        
-         
-
-        // Elegir quien empieza primero
-        
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Elige tu personaje...");
@@ -39,21 +32,20 @@ public class JuegoPeleas {
 
         int seleccionPrincipal = sc.nextInt();
         Luchador personajePrincipal = seleccionarLuchador(seleccionPrincipal);
-        
 
         System.out.println("Selecciona tu oponente...");
         System.out.println("1. Clerigo");
         System.out.println("2. Mago");
         System.out.println("3. Barbaro");
         System.out.println("4. Nigromante");
-        
+
         int seleccionOponente = sc.nextInt();
         Luchador oponente = seleccionarLuchador(seleccionOponente);
 
-        //Realizar enfrentamiento
+        // Realizar enfrentamiento
+        enfrentarLuchadores(personajePrincipal, oponente, sc);
 
-        enfrentarLuchadores(personajePrincipal, oponente);  
-
+        sc.close();
     }
 
     private static Luchador seleccionarLuchador(int seleccion) {
@@ -61,7 +53,7 @@ public class JuegoPeleas {
             case 1:
                 return new Clerigo("Juana De arco", 1000, 150, 100, 180);
             case 2:
-                return new Mago("Gandalf", 1000, 180, 100, 250);
+                return new Mago("Gandalf", 1000, 180, 100, 260);
             case 3:
                 return new Barbaro("Kratos", 1000, 200, 100);
             case 4:
@@ -69,80 +61,65 @@ public class JuegoPeleas {
             default:
                 System.out.println("Selección no válida.");
                 break;
-                
         }
         return null;
-    
-    
-    
     }
-    private static void enfrentarLuchadores(Luchador personaje1, Luchador personaje2) {
 
-        Scanner scanner = new Scanner(System.in);
-
+    private static void enfrentarLuchadores(Luchador personaje1, Luchador personaje2, Scanner scanner) {
         System.out.println("¡Enfrentamiento!");
-        System.out.println("Selecciona el ataque de "+personaje1.getClass().getSimpleName() + ":");
-        System.out.println("1. Ataque basico");
+        
+        while (personaje1.getHp() > 0 && personaje2.getHp() > 0) {
+            // Turno del personaje 1
+            realizarTurno(personaje1, personaje2, scanner);
+
+            // Verificar si el oponente ha sido derrotado después del turno del personaje 1
+            if (personaje2.getHp() <= 0) {
+                System.out.println(personaje2.getClass().getSimpleName() + " ha sido derrotado. ¡Victoria para "
+                        + personaje1.getClass().getSimpleName() + "!");
+                break;
+            }
+
+            // Turno del personaje 2
+            realizarTurno(personaje2, personaje1, scanner);
+
+            // Verificar si el oponente ha sido derrotado después del turno del personaje 2
+            if (personaje1.getHp() <= 0) {
+                System.out.println(personaje1.getClass().getSimpleName() + " ha sido derrotado. ¡Victoria para "
+                        + personaje2.getClass().getSimpleName() + "!");
+                break;
+            }
+        }
+    }
+
+    private static void realizarTurno(Luchador atacante, Luchador objetivo, Scanner scanner) {
+        System.out.println("Turno de " + atacante.getClass().getSimpleName() + ". Elige el ataque:");
+        System.out.println("1. Ataque normal");
         System.out.println("2. Ataque especial");
-
-        int seleccionAtaque2 = scanner.nextInt();
-        realizarAtaque(personaje2, personaje1, seleccionAtaque2);
-        
-       
-    }
-     
-    private static void realizarAtaque(Luchador atacante, Luchador objetivo, int seleccionAtaque){
-        while (atacante.getHp()>0 && objetivo.getHp()>0) {
-
-         int dl1=0, dl2=0;
-
-        dl1 =(int)(Math.random()*(20-1+1))+1;
-        dl2 =(int)(Math.random()*(20-1+1))+1;
-
-        System.out.println("Tiro de dados para turno.....");
-        System.out.println("Dado de personaje 1: "+dl1);
-        System.out.println("Dado de personaje 2: "+dl2);
-        System.out.println(" ");
-
-        if (dl1>dl2) {
-           
-           System.out.println("Gano el turno el personaje 1");
-
-        switch (seleccionAtaque) {
-            case 1:
-                atacante.atacar(objetivo);
-                break;
-            case 2:
-                atacante.ataqueEspecial(objetivo);
-                break;
-            default:
-                break;
-        }
-    }
-    else if(dl2>dl1){
-    System.out.println("Gano el turno el personaje 2 ");
-     Luchador temp = atacante;
-            atacante = objetivo;
-            objetivo = temp;
-
-            switch (seleccionAtaque) {
-            case 1:
-                atacante.atacar(objetivo);
-                break;
-            case 2:
-                atacante.ataqueEspecial(objetivo);
-                break;
-            default:
-                break;
-        }
-
-    }
-
-        
-           
-            
-        
-    }
-}
+        System.out.println("3. Atributo");
+        System.out.println("4. Pasivo");
     
+        int seleccionAtaque = scanner.nextInt();
+    
+        
+        if (seleccionAtaque == 1) {
+            atacante.atacar(objetivo);
+            System.out.println(" ");
+            objetivo.mostrar();
+        } else if (seleccionAtaque == 2) {
+            atacante.ataqueEspecial(objetivo);
+            System.out.println(" ");
+            objetivo.mostrar();
+        }else if (seleccionAtaque == 3) {
+            atacante.Atributo();
+            System.out.println(" ");
+            atacante.mostrar();
+        } else if (seleccionAtaque == 4) {
+            atacante.Pasivo();
+            System.out.println(" ");
+            atacante.mostrar();
+        }
+        else {
+            System.out.println("Selección no válida.");
+        }
+    }
 }
